@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live weather</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://kit.fontawesome.com/93ccf43aec.js" crossorigin="anonymous"></script>
+    </head>
+    
+    <body>
+        <div class="container">
+            <div class="search">
+                <div class="row">
+                    <div class="col-6 search-input">
+                        <form class="search" id="search-city">
+                            <input type="text" placeholder="Enter a city" autocomplete="off"
+                                class="border border-primary rounded-pill" id="search-city-input" padding: 10px; />
+                            <input type="submit" value="Search" class="btn btn-primary rounded-pill" id="search-city-btn" />
+                        </form>
+                        <form class="search" id="return-city">
+                            <input type="submit" value="Current City" class="btn btn-info rounded-pill" id="current-city" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="current-info">
+                <h1 id="city"> Wijk aan Zee</h1>
+                <h2 id="date"></h2>
+    
+                <div class="tempratuur">
+                    <i class="fas fa-sun temprature"></i>
+                    <h3>
+                        <span id="current-temperature-city"> 50</span>
+                        <small>
+                            <a href="#" id="celcius">°C</a> |
+                            <a href="#" id="fahrenheit">°F</a>
+                        </small>
+                    </h3>
+                </div>
+    
+                <p>
+                    Temperature high/low:
+                    <span id="temp-high"><strong>31</strong>
+                    </span>/<span id="temp-low">22</span> °C<br />
+                    Feels like: <span id="feel-temp">60</span>°C <br />
+                    Humidity: <span id="humidity">300</span><br />
+                    Wind-speed: <span id="wind">100</span> m/s <br />
+    
+    
+                </p>
+            </div>
+    
+            <div class="prediction">
+    
+            </div>
+    
+            <div class="card-deck">
+    
+                <div class="card">
+                    <i class="fas fa-cloud-sun"></i>
+                    <div class="card-body">
+                        <h5 class="card-title">Tue 11-8</h5>
+                        <p class="card-text">
+                            <i class="fas fa-thermometer-three-quarters"></i>
+                            <strong id="high-temp">31</strong>/<span id="low-temp">22</span> <small>
+                                <a href="#" class="celcius">°C</a> |
+                                <a href="#" class="fahrenheit">°F</a>
+                            </small>
+                            <br />
+                            <i class="fas fa-wind"></i> 19 km/h
+                        </p>
+                    </div>
+                </div>
+    
+                <div class="card">
+                    <i class="fas fa-cloud-sun"></i>
+                    <div class="card-body">
+                        <h5 class="card-title">Wed 12-8</h5>
+                        <p class="card-text">
+                            <i class="fas fa-thermometer-three-quarters"></i>
+                            <strong>31</strong>/21
+                            <small>
+                                <a href="#" class="celcius">°C</a> |
+                                <a href="#" class="fahrenheit">°F</a>
+                            </small>
+                            <br />
+                            <i class="fas fa-wind"></i> 16 km/h
+                        </p>
+                    </div>
+                </div>
+    
+                <div class="card">
+                    <i class="fas fa-cloud-rain"></i>
+                    <div class="card-body">
+                        <h5 class="card-title">Thu 13-8</h5>
+                        <p class="card-text">
+                            <i class="fas fa-thermometer-three-quarters"></i>
+                            <strong>29</strong>/19
+                            <small>
+                                <a href="#" class="celcius">°C</a> |
+                                <a href="#" class="fahrenheit">°F</a>
+                            </small>
+                            <br />
+                            <i class="fas fa-wind"></i> 11 km/h
+                        </p>
+                    </div>
+                </div>
+    
+                <div class="card">
+                    <i class="fas fa-cloud-rain"></i>
+                    <div class="card-body">
+                        <h5 class="card-title">Fri 14-8</h5>
+                        <p class="card-text">
+                            <i class="fas fa-thermometer-three-quarters"></i>
+                            <strong>24</strong>/18
+                            <small>
+                                <a href="#" class="celcius">°C</a> |
+                                <a href="#" class="fahrenheit">°F</a>
+                            </small>
+                            <br />
+                            <i class="fas fa-wind"></i> 19 km/h
+                        </p>
+                    </div>
+                </div>
+    
+                <div class="card">
+                    <i class="fas fa-cloud-rain"></i>
+                    <div class="card-body">
+                        <h5 class="card-title">Sat 11-8</h5>
+                        <p class="card-text">
+                            <i class="fas fa-thermometer-three-quarters"></i>
+                            <strong>23</strong>/17
+                            <small>
+                                <a href="#" class="celcius">°C</a> |
+                                <a href="#" class="fahrenheit">°F</a>
+                            </small>
+                            <br />
+                            <i class="fas fa-wind"></i> 16 km/h
+                        </p>
+                    </div>
+                </div>
+    
+    
+    
+            </div>
+    
+    
+    
+    
+    
+            <script src="src/script.js"></script>
+
+  </body>
+</html>
