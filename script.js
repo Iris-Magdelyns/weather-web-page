@@ -1,3 +1,5 @@
+/*
+
 // change date
 let now = new Date();
 
@@ -114,3 +116,4 @@ city.addEventListener("submit", search);
 
 let returnCity = document.querySelector("#current-city");
 returnCity.addEventListener("submit", handlePosition);
+*/
