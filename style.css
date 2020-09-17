@@ -29,7 +29,10 @@ i {
   text-align: center;
   padding-top: 10px;
 }
-
+.input-group {
+  margin: 50px auto 20px auto;
+  width: 50%;
+}
 .search {
   display: block;
   margin: 50px auto;
