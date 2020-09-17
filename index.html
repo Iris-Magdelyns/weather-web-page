@@ -27,36 +27,28 @@
 
     <body>
         <div class="container"> 
-            <div class="search">
-                <div class="row">
-                    <div class="col-6 search-input">
-                        <form 
-                            class="search" 
-                            id="search-city">
-                            <input 
-                                type="text" 
-                                placeholder="Enter a city" 
-                                autocomplete="off"
-                                class="border border-primary rounded-pill" 
-                                id="search-city-input" padding: 10px; />
-                            <input 
-                                type="submit" 
-                                value="Search" 
-                                class="btn btn-primary rounded-pill" 
-                                id="search-city-btn" />
-                        </form>
-                        <form 
-                            class="search" 
-                            id="return-city">
-                            <input 
-                                type="submit" 
-                                value="Current City" 
-                                class="btn btn-info rounded-pill" 
-                                id="current-city" />
-                        </form>
-                    </div>
+
+            <div class="input-group">
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Enter a city"
+                    aria-label="Recipient's username with two button addons" 
+                    aria-describedby="button-addon4">
+                <div class="input-group-append" id="button-addon4">
+                    <button 
+                        class="btn btn-outline-secondary" 
+                        type="button">
+                        Search
+                    </button>
+                    <button 
+                        class="btn btn-outline-secondary" 
+                        type="button">
+                        Current place
+                    </button>
                 </div>
             </div>
+            
             <div class="current-info">
                 <h1 id="city"> Wijk aan Zee</h1>
                 <h2 id="date"></h2>
