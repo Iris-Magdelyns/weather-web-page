@@ -135,5 +135,7 @@ city.addEventListener("click", search);
 
 // current location button
 
-let returnToCurrentCity = document.querySelector("#current-city");
-city.addEventListener("click", handlePosition);
+let returnToCurrentCity = document.querySelector("#urrent-city");
+returnToCurrentCity.addEventListener("click", handlePosition);
+
+// change celsius/farhenheid
