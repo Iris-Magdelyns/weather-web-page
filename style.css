@@ -64,7 +64,7 @@ footer {
   width: 550px;
 }
 
-.tempratuur {
+.temprature {
   font-size: 50px;
   display: block;
   float: right;
@@ -72,11 +72,8 @@ footer {
   position: relative;
   bottom: 20px;
 }
-.temprature {
-  font-size: 40px;
-  display: block;
-  position: relative;
-  text-align: center;
+.unit {
+  color: #000000;
 }
 
 .card {

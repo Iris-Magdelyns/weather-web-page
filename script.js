@@ -66,11 +66,16 @@ function showTemperature(response) {
   let dateElement = document.querySelector("#last-updated");
   let iconElement = document.querySelector("#icon");
 
-  currentTemp.innerHTML = Math.round(response.data.main.temp);
+  celsiusTemperature = Math.round(response.data.main.temp);
+  celciusTempratureHigh = Math.round(response.data.main.temp_max);
+  celciusTempratureLow = Math.round(response.data.main.temp_min);
+  celciusTempratureFeelsLike = Math.round(response.data.main.feels_like);
+
+  currentTemp.innerHTML = celsiusTemperature;
   descriptionElement.innerHTML = response.data.weather[0].description;
-  tempLow.innerHTML = Math.round(response.data.main.temp_min);
-  tempHigh.innerHTML = Math.round(response.data.main.temp_max);
-  tempFeel.innerHTML = Math.round(response.data.main.feels_like);
+  tempLow.innerHTML = `${celciusTempratureLow} °C`;
+  tempHigh.innerHTML = celciusTempratureHigh;
+  tempFeel.innerHTML = `${celciusTempratureFeelsLike} °C`;
   humidityCurrent.innerHTML = Math.round(response.data.main.humidity);
   speedWind.innerHTML = Math.round(response.data.wind.speed);
   location.innerHTML = response.data.name;
@@ -91,6 +96,57 @@ function handlePosition(position) {
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
 }
 navigator.geolocation.getCurrentPosition(handlePosition);
+
+// change celsius/farhenheid
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let fahrenheitTemprature = Math.round(celsiusTemperature * 1.8 + 32);
+  let fahrenheitTempHigh = Math.round(celciusTempratureHigh * 1.8 + 32);
+  let fahrenheitTempLow = Math.round(celciusTempratureLow * 1.8 + 32);
+  let fahrenheitTempFeelsLike = Math.round(
+    celciusTempratureFeelsLike * 1.8 + 32
+  );
+  let temperatureElement = document.querySelector("#current-temperature-city");
+  let temperatureElementHigh = document.querySelector("#temp-high");
+  let temperatureElementLow = document.querySelector("#temp-low");
+  let temperatureElementFeelsLike = document.querySelector("#feel-temp");
+  temperatureElement.innerHTML = fahrenheitTemprature;
+  temperatureElementHigh.innerHTML = fahrenheitTempHigh;
+  temperatureElementLow.innerHTML = `${fahrenheitTempLow} °F`;
+  temperatureElementFeelsLike.innerHTML = `${fahrenheitTempFeelsLike} °F`;
+
+  document.getElementById("celcius-link").style.color = "#360DAB";
+  document.getElementById("celcius-link").style.textDecoration = "underline";
+  document.getElementById("fahrenheit-link").style.color = "#000000";
+  document.getElementById("fahrenheit-link").style.textDecoration = "none";
+}
+
+function displayCelciusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#current-temperature-city");
+  let temperatureElementHigh = document.querySelector("#temp-high");
+  let temperatureElementLow = document.querySelector("#temp-low");
+  let temperatureElementFeelsLike = document.querySelector("#feel-temp");
+  temperatureElement.innerHTML = celsiusTemperature;
+  temperatureElementHigh.innerHTML = celciusTempratureHigh;
+  temperatureElementLow.innerHTML = `${celciusTempratureLow} °C`;
+  temperatureElementFeelsLike.innerHTML = `${celciusTempratureFeelsLike} °C`;
+  document.getElementById("fahrenheit-link").style.color = "#360DAB";
+  document.getElementById("fahrenheit-link").style.textDecoration = "underline";
+  document.getElementById("celcius-link").style.color = "#000000";
+  document.getElementById("celcius-link").style.textDecoration = "none";
+}
+
+let celsiusTemperature = null;
+let celciusTempratureHigh = null;
+let celciusTempratureLow = null;
+let celciusTempratureFeelsLike = null;
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celciusLink = document.querySelector("#celcius-link");
+celciusLink.addEventListener("click", displayCelciusTemperature);
 
 // search bar + live weather
 
@@ -117,5 +173,3 @@ returnToCurrentCity.addEventListener(
   "click",
   navigator.geolocation.getCurrentPosition(handlePosition)
 );
-
-// change celsius/farhenheid

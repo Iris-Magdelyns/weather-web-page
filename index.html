@@ -56,7 +56,7 @@
                 <h1 id="city"> </h1>
                 <h2 id="date"></h2>
     
-                <div class="tempratuur">
+                <div class="temprature">
                     <img 
                     src="" 
                     alt=""
@@ -65,9 +65,15 @@
                         <span id="current-temperature-city"></span>
                         <small>
                             <a href="#" 
-                            id="celcius">°C</a> |
+                            class = "unit"
+                            id="celcius-link">
+                            °C
+                        </a> |
                             <a href="#" 
-                            id="fahrenheit">°F</a>
+                            class = "unit"
+                            id="fahrenheit-link">
+                            °F
+                        </a>
                         </small>
                     </h3>
                 </div>
@@ -76,8 +82,8 @@
                     <span id="description"></span> <br />
                     Temperature high/low:
                     <span id="temp-high"><strong></strong>
-                    </span>/<span id="temp-low"></span> °C<br />
-                    Feels like: <span id="feel-temp"></span>°C <br />
+                    </span>/<span id="temp-low"></span> <br />
+                    Feels like: <span id="feel-temp"></span> <br />
                     Humidity: <span id="humidity"></span><br />
                     Wind-speed: <span id="wind"></span> km/h <br />
                     <br />
@@ -94,9 +100,11 @@
                         <h5 class="card-title">Tue 11-8</h5>
                         <p class="card-text">
                             <i class="fas fa-thermometer-three-quarters"></i>
-                            <strong id="high-temp">31</strong>/<span id="low-temp">22</span> <small>
-                                <a href="#" class="celcius">°C</a> |
-                                <a href="#" class="fahrenheit">°F</a>
+                            <strong class="high-temp">31</strong>
+                            /
+                            <span class="low-temp">22</span>
+                            <small>
+                                <span class="temp-unit"></span>
                             </small>
                             <br />
                             <i class="fas fa-wind"></i> 19 km/h
@@ -110,10 +118,11 @@
                         <h5 class="card-title">Wed 12-8</h5>
                         <p class="card-text">
                             <i class="fas fa-thermometer-three-quarters"></i>
-                            <strong>31</strong>/21
+                            <strong class="high-temp">31</strong>
+                            /
+                            <span class="low-temp">22</span> 
                             <small>
-                                <a href="#" class="celcius">°C</a> |
-                                <a href="#" class="fahrenheit">°F</a>
+                                <span class="temp-unit"></span>
                             </small>
                             <br />
                             <i class="fas fa-wind"></i> 16 km/h
@@ -127,10 +136,11 @@
                         <h5 class="card-title">Thu 13-8</h5>
                         <p class="card-text">
                             <i class="fas fa-thermometer-three-quarters"></i>
-                            <strong>29</strong>/19
+                            <strong class="high-temp">31</strong>
+                            /
+                            <span class="low-temp">22</span>
                             <small>
-                                <a href="#" class="celcius">°C</a> |
-                                <a href="#" class="fahrenheit">°F</a>
+                                <span class="temp-unit"></span>
                             </small>
                             <br />
                             <i class="fas fa-wind"></i> 11 km/h
@@ -144,10 +154,11 @@
                         <h5 class="card-title">Fri 14-8</h5>
                         <p class="card-text">
                             <i class="fas fa-thermometer-three-quarters"></i>
-                            <strong>24</strong>/18
+                            <strong class="high-temp">31</strong>
+                            /
+                            <span class="low-temp">22</span>
                             <small>
-                                <a href="#" class="celcius">°C</a> |
-                                <a href="#" class="fahrenheit">°F</a>
+                                <span class="temp-unit"></span>
                             </small>
                             <br />
                             <i class="fas fa-wind"></i> 19 km/h
@@ -161,10 +172,11 @@
                         <h5 class="card-title">Sat 11-8</h5>
                         <p class="card-text">
                             <i class="fas fa-thermometer-three-quarters"></i>
-                            <strong>23</strong>/17
+                            <strong class="high-temp">31</strong>
+                            /
+                            <span class="low-temp">22</span>
                             <small>
-                                <a href="#" class="celcius">°C</a> |
-                                <a href="#" class="fahrenheit">°F</a>
+                                <span class="temp-unit"></span>
                             </small>
                             <br />
                             <i class="fas fa-wind"></i> 16 km/h
