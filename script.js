@@ -132,9 +132,8 @@ function search(event) {
 
 let city = document.querySelector("#search-city");
 city.addEventListener("click", search);
-/*
+
 // current location button
 
-let returnCity = document.querySelector("#current-city");
-returnCity.addEventListener("click", handlePosition);
-*/
+let returnToCurrentCity = document.querySelector("#current-city");
+city.addEventListener("click", handlePosition);
