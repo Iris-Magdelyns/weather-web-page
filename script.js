@@ -80,9 +80,7 @@ function showTemperatureCurrentLocation(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-  iconElement.setAttribute(
-    "alt", 
-    response.data.weather[0].description);
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function handlePosition(position) {
@@ -93,9 +91,6 @@ function handlePosition(position) {
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperatureCurrentLocation);
 }
 navigator.geolocation.getCurrentPosition(handlePosition);
-
-/*
-
 
 // search bar + live weather
 
@@ -136,10 +131,10 @@ function search(event) {
 }
 
 let city = document.querySelector("#search-city");
-city.addEventListener("submit", search);
-
+city.addEventListener("click", search);
+/*
 // current location button
 
 let returnCity = document.querySelector("#current-city");
-returnCity.addEventListener("submit", handlePosition);
+returnCity.addEventListener("click", handlePosition);
 */
