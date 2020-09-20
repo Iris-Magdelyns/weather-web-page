@@ -65,6 +65,7 @@ function showTemperatureCurrentLocation(response) {
   let speedWind = document.querySelector("#wind");
   let location = document.querySelector("h1");
   let dateElement = document.querySelector("#last-updated");
+  let iconElement = document.querySelector("#icon");
 
   currentTemp.innerHTML = Math.round(response.data.main.temp);
   descriptionElement.innerHTML = response.data.weather[0].description;
@@ -75,6 +76,13 @@ function showTemperatureCurrentLocation(response) {
   speedWind.innerHTML = Math.round(response.data.wind.speed);
   location.innerHTML = response.data.name;
   dateElement.innerHTML = dateFormat(response.data.dt * 1000);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute(
+    "alt", 
+    response.data.weather[0].description);
 }
 
 function handlePosition(position) {
@@ -87,41 +95,7 @@ function handlePosition(position) {
 navigator.geolocation.getCurrentPosition(handlePosition);
 
 /*
-// weather current location
 
-function showTemperatureCurrentLocation(response) {
-  let temperatureHigh = Math.round(response.data.main.temp_max);
-  let temperatureLow = Math.round(response.data.main.temp_min);
-  let temperatureCurrent = Math.round(response.data.main.temp);
-  let feelTemp = Math.round(response.data.main.feels_like);
-  let currentHumidity = Math.round(response.data.main.humidity);
-  let windSpeed = Math.round(response.data.wind.speed);
-  let currentLocation = response.data.name;
-  let currentTemp = document.querySelector("#current-temperature-city");
-  let tempHigh = document.querySelector("#temp-high");
-  let tempLow = document.querySelector("#temp-low");
-  let tempFeel = document.querySelector("#feel-temp");
-  let humidityCurrent = document.querySelector("#humidity");
-  let speedWind = document.querySelector("#wind");
-  let location = document.querySelector("h1");
-
-  currentTemp.innerHTML = temperatureCurrent;
-  tempLow.innerHTML = temperatureLow;
-  tempHigh.innerHTML = temperatureHigh;
-  tempFeel.innerHTML = feelTemp;
-  humidityCurrent.innerHTML = currentHumidity;
-  speedWind.innerHTML = windSpeed;
-  location.innerHTML = currentLocation;
-}
-
-function handlePosition(position) {
-  let lat = position.coords.latitude;
-  let long = position.coords.longitude;
-  let apiKey = "25770910791bc4a6117831afdb2e65e7";
-  let apiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric`;
-  axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperatureCurrentLocation);
-}
-navigator.geolocation.getCurrentPosition(handlePosition);
 
 // search bar + live weather
 
