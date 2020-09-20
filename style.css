@@ -84,3 +84,10 @@ footer {
 .card-text {
   font-size: 20px;
 }
+#description {
+  text-transform: capitalize;
+}
+#last-updated {
+  font-size: 10px;
+  text-transform: capitalize;
+}
