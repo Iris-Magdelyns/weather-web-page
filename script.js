@@ -99,13 +99,11 @@ navigator.geolocation.getCurrentPosition(handlePosition);
 // change celsius/farhenheid
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
-
-  let fahrenheitTempLow = Math.round(celciusTempratureLow * 1.8 + 32);
   let fahrenheitTempFeelsLike = Math.round(
     celciusTempratureFeelsLike * 1.8 + 32
   );
   let temperatureElement = document.querySelector("#current-temperature-city");
-
+  let fahrenheitTemprature = Math.round(celsiusTemperature * 1.8 + 32);
   let temperatureElementFeelsLike = document.querySelector("#feel-temp");
   temperatureElement.innerHTML = fahrenheitTemprature;
 
