@@ -163,13 +163,15 @@ function search(event) {
   console.log(cityInput.value);
 }
 
+function currentCity(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(handlePosition);
+}
+
 let city = document.querySelector("#search-city");
 city.addEventListener("click", search);
 
 // current location button
 
 let returnToCurrentCity = document.querySelector("#current-city");
-returnToCurrentCity.addEventListener(
-  "click",
-  navigator.geolocation.getCurrentPosition(handlePosition)
-);
+returnToCurrentCity.addEventListener("click", currentCity);
