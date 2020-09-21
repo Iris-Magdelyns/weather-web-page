@@ -19,7 +19,7 @@ h1 {
 }
 h2 {
   color: #512b58;
-  font-size: 30px;
+  font-size: 20px;
 }
 h5 {
   font-size: 25px;
@@ -68,10 +68,10 @@ footer {
   font-size: 50px;
   display: block;
   float: right;
-  padding-bottom: 25px;
   position: relative;
-  bottom: 20px;
+  bottom: 50px;
 }
+
 .unit {
   color: #000000;
 }

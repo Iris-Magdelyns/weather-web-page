@@ -36,8 +36,10 @@ if (minutes < 10) {
   minutes = `0${minutes}`;
 }
 
-let currentDate = document.querySelector("#date");
-currentDate.innerHTML = `${day} ${date} ${month}, ${hour}:${minutes}`;
+let currentDay = document.querySelector("#day");
+currentDay.innerHTML = `${day}`;
+let currentDate = document.querySelector("#date-and-time");
+currentDate.innerHTML = `${date} ${month}, ${hour}:${minutes}`;
 
 function dateFormat(timestamp) {
   let date = new Date(timestamp);
@@ -57,8 +59,7 @@ function showTemperature(response) {
   console.log(response.data);
   let currentTemp = document.querySelector("#current-temperature-city");
   let descriptionElement = document.querySelector("#description");
-  let tempHigh = document.querySelector("#temp-high");
-  let tempLow = document.querySelector("#temp-low");
+
   let tempFeel = document.querySelector("#feel-temp");
   let humidityCurrent = document.querySelector("#humidity");
   let speedWind = document.querySelector("#wind");
@@ -67,14 +68,12 @@ function showTemperature(response) {
   let iconElement = document.querySelector("#icon");
 
   celsiusTemperature = Math.round(response.data.main.temp);
-  celciusTempratureHigh = Math.round(response.data.main.temp_max);
-  celciusTempratureLow = Math.round(response.data.main.temp_min);
+
   celciusTempratureFeelsLike = Math.round(response.data.main.feels_like);
 
   currentTemp.innerHTML = celsiusTemperature;
   descriptionElement.innerHTML = response.data.weather[0].description;
-  tempLow.innerHTML = `${celciusTempratureLow} °C`;
-  tempHigh.innerHTML = celciusTempratureHigh;
+
   tempFeel.innerHTML = `${celciusTempratureFeelsLike} °C`;
   humidityCurrent.innerHTML = Math.round(response.data.main.humidity);
   speedWind.innerHTML = Math.round(response.data.wind.speed);
@@ -100,19 +99,16 @@ navigator.geolocation.getCurrentPosition(handlePosition);
 // change celsius/farhenheid
 function displayFahrenheitTemperature(event) {
   event.preventDefault();
-  let fahrenheitTemprature = Math.round(celsiusTemperature * 1.8 + 32);
-  let fahrenheitTempHigh = Math.round(celciusTempratureHigh * 1.8 + 32);
+
   let fahrenheitTempLow = Math.round(celciusTempratureLow * 1.8 + 32);
   let fahrenheitTempFeelsLike = Math.round(
     celciusTempratureFeelsLike * 1.8 + 32
   );
   let temperatureElement = document.querySelector("#current-temperature-city");
-  let temperatureElementHigh = document.querySelector("#temp-high");
-  let temperatureElementLow = document.querySelector("#temp-low");
+
   let temperatureElementFeelsLike = document.querySelector("#feel-temp");
   temperatureElement.innerHTML = fahrenheitTemprature;
-  temperatureElementHigh.innerHTML = fahrenheitTempHigh;
-  temperatureElementLow.innerHTML = `${fahrenheitTempLow} °F`;
+
   temperatureElementFeelsLike.innerHTML = `${fahrenheitTempFeelsLike} °F`;
 
   document.getElementById("celcius-link").style.color = "#360DAB";
@@ -124,12 +120,10 @@ function displayFahrenheitTemperature(event) {
 function displayCelciusTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#current-temperature-city");
-  let temperatureElementHigh = document.querySelector("#temp-high");
-  let temperatureElementLow = document.querySelector("#temp-low");
+
   let temperatureElementFeelsLike = document.querySelector("#feel-temp");
   temperatureElement.innerHTML = celsiusTemperature;
-  temperatureElementHigh.innerHTML = celciusTempratureHigh;
-  temperatureElementLow.innerHTML = `${celciusTempratureLow} °C`;
+
   temperatureElementFeelsLike.innerHTML = `${celciusTempratureFeelsLike} °C`;
   document.getElementById("fahrenheit-link").style.color = "#360DAB";
   document.getElementById("fahrenheit-link").style.textDecoration = "underline";
@@ -138,8 +132,7 @@ function displayCelciusTemperature(event) {
 }
 
 let celsiusTemperature = null;
-let celciusTempratureHigh = null;
-let celciusTempratureLow = null;
+
 let celciusTempratureFeelsLike = null;
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
