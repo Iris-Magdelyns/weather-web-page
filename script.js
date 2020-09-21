@@ -41,25 +41,29 @@ currentDay.innerHTML = `${day}`;
 let currentDate = document.querySelector("#date-and-time");
 currentDate.innerHTML = `${date} ${month}, ${hour}:${minutes}`;
 
-function dateFormat(timestamp) {
+function formatHours(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
   }
   let minutes = date.getMinutes();
-  let day = days[date.getDay()];
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  return `${day} ${hours}:${minutes}`;
+
+  return `${hours}:${minutes}`;
+}
+
+function dateFormat(timestamp) {
+  let date = new Date(timestamp);
+  let day = days[date.getDay()];
+  return `${day} ${formatHours(timestamp)}`;
 }
 
 function showTemperature(response) {
-  console.log(response.data);
   let currentTemp = document.querySelector("#current-temperature-city");
   let descriptionElement = document.querySelector("#description");
-
   let tempFeel = document.querySelector("#feel-temp");
   let humidityCurrent = document.querySelector("#humidity");
   let speedWind = document.querySelector("#wind");
@@ -68,12 +72,9 @@ function showTemperature(response) {
   let iconElement = document.querySelector("#icon");
 
   celsiusTemperature = Math.round(response.data.main.temp);
-
   celciusTempratureFeelsLike = Math.round(response.data.main.feels_like);
-
   currentTemp.innerHTML = celsiusTemperature;
   descriptionElement.innerHTML = response.data.weather[0].description;
-
   tempFeel.innerHTML = `${celciusTempratureFeelsLike} °C`;
   humidityCurrent.innerHTML = Math.round(response.data.main.humidity);
   speedWind.innerHTML = Math.round(response.data.wind.speed);
@@ -86,6 +87,39 @@ function showTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
+//forcast
+function displayForcast(response) {
+  console.log(response.data);
+  let forcastElement = document.querySelector("#forcast");
+  forcastElement.innerHTML = null;
+  let forcast = null;
+
+  for (let index = 0; index < 6; index++) {
+    forcast = response.data.list[index];
+    forcastElement.innerHTML += `
+    <div class="col-2">
+      <h4>
+        ${formatHours(forcast.dt * 1000)}
+      </h4>
+      <img 
+        src="http://openweathermap.org/img/wn/${
+          forcast.weather[0].icon
+        }@2x.png" 
+        alt="${forcast.weather[0].description}"
+        class = "forcast-icon">
+      <p>
+        <strong>${Math.round(forcast.main.temp_max)}</strong>
+        / ${Math.round(forcast.main.temp_min)}
+        <span></span>
+        <br />
+        <i class="fas fa-wind"></i> <span>${Math.round(
+          forcast.wind.speed
+        )} </span>km/h
+      </p>
+    </div>`;
+  }
+}
+
 // weather current location
 function handlePosition(position) {
   let lat = position.coords.latitude;
@@ -93,6 +127,9 @@ function handlePosition(position) {
   let apiKey = "25770910791bc4a6117831afdb2e65e7";
   let apiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric`;
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&units=metric`;
+  axios.get(`${apiUrl}&appid=${apiKey}`).then(displayForcast);
 }
 navigator.geolocation.getCurrentPosition(handlePosition);
 
@@ -130,12 +167,9 @@ function displayCelciusTemperature(event) {
 }
 
 let celsiusTemperature = null;
-
 let celciusTempratureFeelsLike = null;
-
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
-
 let celciusLink = document.querySelector("#celcius-link");
 celciusLink.addEventListener("click", displayCelciusTemperature);
 
@@ -151,7 +185,8 @@ function search(event) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&units=metric`;
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
 
-  console.log(cityInput.value);
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityInput.value}&units=metric`;
+  axios.get(`${apiUrl}&appid=${apiKey}`).then(displayForcast);
 }
 
 function currentCity(event) {
@@ -166,3 +201,4 @@ city.addEventListener("click", search);
 
 let returnToCurrentCity = document.querySelector("#current-city");
 returnToCurrentCity.addEventListener("click", currentCity);
+
