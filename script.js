@@ -28,7 +28,7 @@ let day = days[now.getDay()];
 let month = months[now.getMonth()];
 let hour = now.getHours();
 if (hour < 10) {
-  hour = `0${hours}`;
+  hour = `0${hour}`;
 }
 let minutes = now.getMinutes();
 let date = now.getDate();
@@ -108,8 +108,8 @@ function displayForcast(response) {
         alt="${forcast.weather[0].description}"
         class = "forcast-icon">
       <p>
-        <strong>${Math.round(forcast.main.temp_max)}</strong>
-        / ${Math.round(forcast.main.temp_min)}
+        <strong>${Math.ceil(forcast.main.temp_max)}</strong>
+        / ${Math.floor(forcast.main.temp_min)}
         <span></span>
         <br />
         <i class="fas fa-wind"></i> <span>${Math.round(
@@ -201,4 +201,3 @@ city.addEventListener("click", search);
 
 let returnToCurrentCity = document.querySelector("#current-city");
 returnToCurrentCity.addEventListener("click", currentCity);
-
