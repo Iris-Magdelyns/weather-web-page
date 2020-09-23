@@ -82,7 +82,7 @@ function showTemperature(response) {
   dateElement.innerHTML = dateFormat(response.data.dt * 1000);
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
@@ -102,7 +102,7 @@ function displayForcast(response) {
         ${formatHours(forcast.dt * 1000)}
       </h4>
       <img 
-        src="http://openweathermap.org/img/wn/${
+        src="https://openweathermap.org/img/wn/${
           forcast.weather[0].icon
         }@2x.png" 
         alt="${forcast.weather[0].description}"
@@ -125,7 +125,7 @@ function handlePosition(position) {
   let lat = position.coords.latitude;
   let long = position.coords.longitude;
   let apiKey = "25770910791bc4a6117831afdb2e65e7";
-  let apiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric`;
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
 
   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&units=metric`;
